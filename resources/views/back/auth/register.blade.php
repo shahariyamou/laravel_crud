@@ -126,7 +126,7 @@
                 <div class="mt-5 text-center">
 
                     <div>
-                        <p>Alreadt have an account ? <a href="{{ route('login') }}" class="font-weight-medium text-primary"> Login now </a> </p>
+                        <p>Already have an account ? <a href="{{ route('login') }}" class="font-weight-medium text-primary"> Login now </a> </p>
                         <p>© 2020 Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
                     </div>
                 </div>

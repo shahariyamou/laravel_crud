@@ -20,7 +20,7 @@ class Teacher extends Model
          'name' => $request->name,
          'phone' => $request->phone,
          'subject' => $request->subject,
-         'image' => Helper::uploadFile(),
+         'image' => isset($id) ? Helper::uploadFile($request->file('image'), 'teachers-image', Teacher::find($id)->image) : Helper::uploadFile($request->file('image'), 'teachers-image'),
          'address' => $request->address,
          'status' => $request->status,
      ]);

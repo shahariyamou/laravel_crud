@@ -52,7 +52,9 @@ class TeacherController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('back.teachers.edit', [
+            'teacher' => Teacher::find($id)
+        ]);
     }
 
     /**
@@ -60,7 +62,9 @@ class TeacherController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->teacher = Teacher::find($id);
+        Teacher::createOrUpdateTeacher($request, $this->teacher->user_id, $id );
+        return redirect('teachers')->with('success', 'Teacher updated successfully');
     }
 
     /**
@@ -68,6 +72,14 @@ class TeacherController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->teacher = Teacher::find($id);
+       $this->user = User::where('id', $this->teacher->user_id)->first();
+       $this->user->delete();
+       if (file_exists($this->teacher->image))
+       {
+           unlink($this->teacher->image);
+       }
+       $this->teacher->delete();
+       return back()->with('success', 'Teacher deleted successfully.');
     }
 }

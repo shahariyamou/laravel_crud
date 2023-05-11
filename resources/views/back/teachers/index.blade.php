@@ -32,14 +32,22 @@
                                         <td>{{ $teacher->user->email }}</td>
                                         <td>{{ $teacher->phone }}</td>
                                         <td>{{ $teacher->addressd }}</td>
-                                        <td>{{ $teacher->image }}</td>
+                                        <td>
+                                            <img src="{{ asset($teacher->image) }}" alt="" style="height: 60px">
+                                        </td>
                                         <td>{{ $teacher->status == 1 ? 'Active' : 'Inactive' }}</td>
                                         <td>
-                                            <a href="" class="btn btn-warning btn-sm">
+                                            <a href="{{ route('teachers.edit', $teacher->id) }}" class="btn btn-warning btn-sm">
                                                 <i class="fas fa-edit"></i>
-                                            </a><a href="" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash"></i>
                                             </a>
+                                            <form onsubmit="return confirm('Are you sure to delete this teacher')" action="{{ route('teachers.destroy', $teacher->id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+
                                         </td>
                                     </tr>
                                 @endforeach
