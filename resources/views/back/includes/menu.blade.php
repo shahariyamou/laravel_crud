@@ -27,6 +27,30 @@
                     </ul>
                 </li>
 
+                 <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-layout"></i>
+                            <span>Categories</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{ route('categories.create') }}">Add Category</a></li>
+                            <li><a href="{{ route('categories.index') }}">Manage Category</a></li>
+
+                        </ul>
+                    </li>
+
+                <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-layout"></i>
+                            <span>Courses</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{ route('courses.create') }}">Add Courses</a></li>
+                            <li><a href="{{ route('courses.index') }}">Manage Courses</a></li>
+
+                        </ul>
+                    </li>
+
 
 
             </ul>

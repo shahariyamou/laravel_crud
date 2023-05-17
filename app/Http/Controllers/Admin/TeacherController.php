@@ -64,7 +64,7 @@ class TeacherController extends Controller
     {
         $this->teacher = Teacher::find($id);
         Teacher::createOrUpdateTeacher($request, $this->teacher->user_id, $id );
-        return redirect('teachers')->with('success', 'Teacher updated successfully');
+        return redirect('/teachers')->with('success', 'Teacher updated successfully');
     }
 
     /**

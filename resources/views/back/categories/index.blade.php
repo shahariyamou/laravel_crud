@@ -1,6 +1,6 @@
 @extends('back.master')
 
-@section('title', 'Manage Teacher')
+@section('title', 'Manage Categories')
 
 @section('body')
     <section>
@@ -9,7 +9,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="text-center">Manage Teacher</h3>
+                            <h3 class="text-center">Manage Categories</h3>
                         </div>
                         <div class="card-body">
                             <table class="table baseDataTable">
@@ -17,31 +17,24 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
-                                    <th>Image</th>
+                                    <th>slug</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($teachers as $teacher)
+                                @foreach($categories as $category)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $teacher->name }}</td>
-                                        <td>{{ $teacher->user->email }}</td>
-                                        <td>{{ $teacher->phone }}</td>
-                                        <td>{{ $teacher->addressd }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->slug }}</td>
+                                        <td>{{ $category->status == 1 ? 'Active' : 'Inactive' }}</td>
+
                                         <td>
-                                            <img src="{{ asset($teacher->image) }}" alt="" style="height: 60px">
-                                        </td>
-                                        <td>{{ $teacher->status == 1 ? 'Active' : 'Inactive' }}</td>
-                                        <td>
-                                            <a href="{{ route('teachers.edit', $teacher->id) }}" class="btn btn-warning btn-sm">
+                                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form onsubmit="return confirm('Are you sure to delete this teacher')" action="{{ route('teachers.destroy', $teacher->id) }}" method="post">
+                                            <form onsubmit="return confirm('Are you sure to delete this Category')" action="{{ route('categories.destroy', $category->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger btn-sm">
